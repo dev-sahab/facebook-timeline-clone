@@ -665,7 +665,7 @@ img{
 }
 
 #fb-post-form .self {
-    /* display: none; */
+    display: none;
 }
 #fb-post-form .modal-body {
     position: relative;
