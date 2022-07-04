@@ -1,0 +1,20 @@
+:root{
+    --header-bg: #242526;
+    --body-bg: #18191a;
+    --secondary-clr: #3a3b3c;
+    --gray-clr: #4e4f50;;
+    --side-hvr: #303031;
+    --primary-clr: #e4e6eb;
+    --primary-blue: #4599ff;
+}
+
+.inner-container{
+    max-width: 350px;
+    flex: 1;
+}
+.vertical-middle{
+    vertical-align: middle;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
