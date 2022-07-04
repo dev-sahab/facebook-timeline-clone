@@ -595,3 +595,7 @@ img{
 .post-card .pc-bottom .reaction > div:hover {
     background: var(--secondary-clr)
 }
+
+@media (max-width: 1366px){
+    
+}

@@ -8,6 +8,9 @@
     --primary-blue: #4599ff;
 }
 
+
+
+
 .inner-container{
     max-width: 350px;
     flex: 1;
@@ -17,4 +20,36 @@
 }
 .cursor-pointer{
     cursor: pointer;
+}
+
+
+
+
+
+
+/* responsive */
+
+
+@media (max-width: 1366px){
+    
+    .inner-container,
+    .fixed-sidebar{
+        max-width: 302px !important;
+    }
+
+    #main-contents,
+    #header .nav,
+    #main-contents #story  {
+        max-width: 590px !important;
+    }
+    #main-contents section {
+        max-width: 500px;
+        margin: auto;
+    }
+    #story {content: space-between;
+        gap: 10px;
+    }
+
+
+
 }
