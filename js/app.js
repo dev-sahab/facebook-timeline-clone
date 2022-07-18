@@ -138,11 +138,11 @@ const getAllPosts = () => {
                             <div class="auth-info">
                                 <div class="left-side">
                                     <div class="auth-img">
-                                        <img src="./assets/img/shahab.png">
+                                        <img src="./assets/img/shahab story.png">
                                     </div>
                                     <div class="auth-details">
                                         <div class="name">
-                                            <span>Muhammad Shahab</span>
+                                            <span>Md Shahab Uddin</span>
                                         </div>
                                         <div class="details">
                                             <span>Just now</span>
