@@ -1,10 +1,11 @@
 @import url(utility.css);
 @import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
 
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 
 @import url('http://fonts.cdnfonts.com/css/helvetica-255');       
 
-* {
+*,p {
     box-sizing: border-box;
     font-family: Roboto, sans-serif;
     padding: 0;
@@ -353,35 +354,34 @@ img{
     z-index: -1;
 }
 
-#story .story-box.author-box .auth-img{
-    height: 150px;
-    background: url(../assets/img/shahab\ story.png);
-    background-size: 135% auto;
-    background-position: 50% 0;
-    transition: all .3s ease-in-out;
+#story .story-box.author-box .auth-img {
+	height: calc(100% - 50px);
+	background: url(../assets/img/shahab\ story.png) no-repeat center;
+	transition: all .3s ease-in-out;
+    background-size: auto 102%;
 }
-#story .story-box.author-box:hover .auth-img{
-    background-size: 140% auto;
+#story .story-box.author-box:hover .auth-img {
+	background-size: auto 110%;
 }
-
-#story .story-box.author-box .desc{
-    background-color: #202122;
-    height: calc(100% - 150px);
-    position: relative;
+#story .story-box.author-box .desc {
+	background-color: #202122;
+	height: 50px;
+	position: relative;
 }
-#story .story-box.author-box .desc .icon{
-    background: #2e89ff;
-    border-radius: 50%;
-    height: 32px;
-    width: 32px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translate( -50%, 50%)
+#story .story-box.author-box .desc .icon {
+	background: #2e89ff;
+	border-radius: 50%;
+	height: 32px;
+	width: 32px;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	transform: translate( -50%, 50%);
+	border: 2px solid #fff;
 }
 #story .story-box.author-box .desc .text{
     color: #fff;
@@ -415,10 +415,7 @@ img{
     background-image: url(../assets/img/st1.jpg);
 }
 #story .story-box:nth-child(3){
-    background-image: url(../assets/img/st2.jpg);
-}
-#story .story-box:nth-child(3){
-    background-image: url(../assets/img/st3.jpg);
+    background-image: url(../assets/img/leon.jpg);
 }
 #story .story-box:nth-child(4){
     background-image: url(../assets/img/st4.jpg);
@@ -743,4 +740,29 @@ img{
 	top: 50%;
 	right: 10px;
 	transform: translateY(-50%);
+}
+
+
+
+/* like count */
+.like a, .like a span {
+    pointer-events: none;
+}
+.reaction a, .reaction  span {
+    user-select: none;
+}
+.like a, .like:hover a {
+    color: #B0B3B8;
+}
+
+.liked a, .like:hover a{
+    color: var(--primary-blue);
+}
+.like-count {
+    color: var(--text-clr);
+    font-size: 12px;
+    transform: translateY(-8px);
+    display: flex;
+    gap: 7px;
+    align-items: center;
 }

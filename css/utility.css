@@ -51,6 +51,19 @@
         gap: 10px;
     }
 
+}
+@media (max-width: 767px){
+    #left_sidebar,
+    #right-sidebar {
+        display: none;
+    }
+}
 
-
+@media (max-width: 460px){
+    #story .story-box:nth-child(5) {
+        display: none;
+    }
+    #story .story-box{
+        height: 160px !important;
+    }
 }
