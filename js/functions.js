@@ -5,7 +5,7 @@
 
 
 function activeLink () {
-    list.forEach((item) =>
+    navlist.forEach((item) =>
     item.classList.remove('active'));
     this.classList.add('active');
 }

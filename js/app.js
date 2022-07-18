@@ -215,7 +215,7 @@ const getAllPosts = () => {
                                     </div>
                                     <div class="auth-details">
                                         <div class="name">
-                                            <span>${item.user_name ? 'item.user_name' : 'Facebook User'}</span>
+                                            <span>${item.user_name ? item.user_name : 'Facebook User'}</span>
                                         </div>
                                         <div class="details">
                                             <span>Just now</span>
