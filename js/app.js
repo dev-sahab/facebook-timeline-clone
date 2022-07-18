@@ -3,16 +3,28 @@ const navlist = document.querySelectorAll('.nav li');
 
 const post_method = document.getElementById('post_method');
 const self = document.querySelector('.self');
+const soElse = document.querySelector('.else');
 
 const timeline = document.getElementById('post_timeline');
 
+// post form
 const self_post_form = document.getElementById('self_fb_post_form');
+const else_fb_post_form = document.getElementById('else_fb_post_form');
+
 // get photo & video icons 
 const btn_photo = self_post_form.querySelector('.extra-field .photo');
 const btn_video = self_post_form.querySelector('.extra-field .video');
+// get photo & video icons for other user form
+const btn_photo2 = else_fb_post_form.querySelector('.extra-field2 .photo');
+const btn_video2 = else_fb_post_form.querySelector('.extra-field2 .video');
+
+console.log(btn_photo2);
 // get photo & video fields 
 const photo_feild = self_post_form.querySelector('.extra-field-inputs .photo');
 const video_feild = self_post_form.querySelector('.extra-field-inputs .video');
+// get photo & video fields 2
+const photo_feild2 = else_fb_post_form.querySelector('.extra-field-inputs2 .photo');
+const video_feild2 = else_fb_post_form.querySelector('.extra-field-inputs2 .video');
 // get photo & video input
 const photo_input = self_post_form.querySelector('input[name="photo"]');
 const video_input = self_post_form.querySelector('input[name="video"]');
@@ -60,10 +72,19 @@ navlist.forEach((item) =>
 
 // post form selector
 post_method.onchange = () => {
+    //seft form
     if (post_method.value == 'self') {
         self.style.display = 'block';
-    } else{
+    }else{
         self.style.display = 'none';
+    }
+
+    //other form
+    if(post_method.value == "else"){
+        soElse.style.display = "block";
+    } 
+    else{
+        soElse.style.display = "none";
     }
 }
 
@@ -79,15 +100,38 @@ btn_video.onclick = () => {
     photo_feild.style.display = 'none';
 } 
 
+
+// photo field view others
+btn_photo2.onclick = () => {
+    photo_feild2.style.display = 'block';
+    video_feild2.style.display = 'none';
+} 
+
+// video field view others
+btn_video2.onclick = () => {
+    video_feild2.style.display = 'block';
+    photo_feild2.style.display = 'none';
+} 
+
 //loop for post timeline
 const getAllPosts = () => {
 
     let list = "";
-    const data = readLSdata("self_fb_post");
+    const data = readLSdata("fb_post");
+
+    // If post not found
+    if(!data){
+        timeline.innerHTML = "<p class='post-not-found'>No Post Found</p>";
+        return false;
+    }
 
     if(data){
 
-        data.map((item, index) => {
+        //loop for post timeline
+        data.reverse().map((item, index) => {
+
+            // Self Post loop
+            if(item.who_post == 'self'){
                 list += `
                 <div class="post-card">
                     <div class="card-inner  my-4">
@@ -156,7 +200,81 @@ const getAllPosts = () => {
                         </div>
                     </div>
                 </div>
-            `;
+                `;
+            }
+
+            // other post
+            if (item.who_post == 'else'){
+                list += `
+                <div class="post-card">
+                    <div class="card-inner  my-4">
+                        <div class="pc-top">
+                            <div class="auth-info">
+                                <div class="left-side">
+                                    <div class="auth-img">
+                                        <img src="${item.user_img}">
+                                    </div>
+                                    <div class="auth-details">
+                                        <div class="name">
+                                            <span>${item.user_name}</span>
+                                        </div>
+                                        <div class="details">
+                                            <span>Just now</span>
+                                            <span class="icon">
+                                                <svg fill="currentColor" viewBox="0 0 16 16" width="1em" height="1em" class="a8c37x1j ms05siws l3qrxjdp b7h9ocf4 py1f6qlh cyypbtt7 fwizqjfa" title="Shared with Public"><title>Shared with Public</title><g fill-rule="evenodd" transform="translate(-448 -544)"><g><path d="M109.5 408.5c0 3.23-2.04 5.983-4.903 7.036l.07-.036c1.167-1 1.814-2.967 2-3.834.214-1 .303-1.3-.5-1.96-.31-.253-.677-.196-1.04-.476-.246-.19-.356-.59-.606-.73-.594-.337-1.107.11-1.954.223a2.666 2.666 0 0 1-1.15-.123c-.007 0-.007 0-.013-.004l-.083-.03c-.164-.082-.077-.206.006-.36h-.006c.086-.17.086-.376-.05-.529-.19-.214-.54-.214-.804-.224-.106-.003-.21 0-.313.004l-.003-.004c-.04 0-.084.004-.124.004h-.037c-.323.007-.666-.034-.893-.314-.263-.353-.29-.733.097-1.09.28-.26.863-.8 1.807-.22.603.37 1.166.667 1.666.5.33-.11.48-.303.094-.87a1.128 1.128 0 0 1-.214-.73c.067-.776.687-.84 1.164-1.2.466-.356.68-.943.546-1.457-.106-.413-.51-.873-1.28-1.01a7.49 7.49 0 0 1 6.524 7.434" transform="translate(354 143.5)"></path><path d="M104.107 415.696A7.498 7.498 0 0 1 94.5 408.5a7.48 7.48 0 0 1 3.407-6.283 5.474 5.474 0 0 0-1.653 2.334c-.753 2.217-.217 4.075 2.29 4.075.833 0 1.4.561 1.333 2.375-.013.403.52 1.78 2.45 1.89.7.04 1.184 1.053 1.33 1.74.06.29.127.65.257.97a.174.174 0 0 0 .193.096" transform="translate(354 143.5)"></path><path fill-rule="nonzero" d="M110 408.5a8 8 0 1 1-16 0 8 8 0 0 1 16 0zm-1 0a7 7 0 1 0-14 0 7 7 0 0 0 14 0z" transform="translate(354 143.5)"></path></g></g></svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="right-side">
+                                    <span>
+                                        <div class="dropdown">
+                                            <button data-bs-toggle="dropdown">
+                                                <i class="fas fa-ellipsis-h"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                            <li><a class="dropdown-item edit" href="#">Edit</a></li>
+                                            <li><a class="dropdown-item delete" href="#">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            ${item.post_text ? '<div class="post-content"><p>'+item.post_text+'</p></div>' : ''}
+
+                        </div>
+                        
+                        ${item.photo ? '<div class="pc-image"><img src="'+ item.photo +'"/></div>' : ""}
+
+                        ${item.video ? '<div class="pc-video">'+item.video+'</div>' : ''}
+
+                        <div class="pc-bottom">
+                            <div class="like-count"></div>
+                            <hr>
+                                <div class="reaction">
+                                    <div class="like">
+                                        <a href="">
+                                            <span><i class="fas fa-thumbs-up"></i></span>
+                                            <span>Like</span>
+                                        </a>
+                                    </div>
+                                    <div class="comment">
+                                        <span><i class="bi bi-chat-square"></i></svg>
+                                        </span>
+                                        <span>Comment</span>
+                                    </div>
+                                    <div class="share">
+                                        <span><i class="fas fa-share"></i></span>
+                                        <span>Share</span>
+                                    </div>
+                                </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }
         })
 
 
@@ -168,7 +286,7 @@ const getAllPosts = () => {
 
 
 
-console.log(getAllPosts());
+getAllPosts();
 
 
 
@@ -180,24 +298,63 @@ self_post_form.onsubmit = (e) => {
 
     e.preventDefault();
 
-    let timeout = setTimeout(() => {
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+
+    createLSData("fb_post", data);
+
+
+
+
+
+    let clear = setTimeout(() => {
+
         video_feild.style.display = 'none';
         photo_feild.style.display = 'none';
         e.target.reset();
 
-        clearTimeout(timeout);
-        
-    },500);
+
+        getAllPosts();
+
+        clearTimeout(clear)
+    },500)
+
+    
+
+}
+
+
+// else post form
+else_fb_post_form.onsubmit = (e) => {
+
+    e.preventDefault();
 
 
     const formData = new FormData(e.target);
-    const {photo, video, post_text} = Object.fromEntries(formData.entries());
     const data = Object.fromEntries(formData.entries());
 
 
-    createLSData("self_fb_post", data);
+    createLSData("fb_post", data);
 
-    getAllPosts();
+
+
+
+
+    let clear = setTimeout(() => {
+
+        video_feild.style.display = 'none';
+        photo_feild.style.display = 'none';
+        e.target.reset();
+
+
+        getAllPosts();
+
+        clearTimeout(clear)
+    },500)
+
+    
 
 }
 
