@@ -1,10 +1,12 @@
 // get elements
 const navlist = document.querySelectorAll('.nav li');
 
+// get elements for post user selector
 const post_method = document.getElementById('post_method');
 const self = document.querySelector('.self');
 const soElse = document.querySelector('.else');
 
+// get element for push timeline loop
 const timeline = document.getElementById('post_timeline');
 
 // post form
@@ -14,26 +16,25 @@ const else_fb_post_form = document.getElementById('else_fb_post_form');
 // get photo & video icons 
 const btn_photo = self_post_form.querySelector('.extra-field .photo');
 const btn_video = self_post_form.querySelector('.extra-field .video');
+
 // get photo & video icons for other user form
 const btn_photo2 = else_fb_post_form.querySelector('.extra-field2 .photo');
 const btn_video2 = else_fb_post_form.querySelector('.extra-field2 .video');
 
-console.log(btn_photo2);
 // get photo & video fields 
 const photo_feild = self_post_form.querySelector('.extra-field-inputs .photo');
 const video_feild = self_post_form.querySelector('.extra-field-inputs .video');
+
 // get photo & video fields 2
 const photo_feild2 = else_fb_post_form.querySelector('.extra-field-inputs2 .photo');
 const video_feild2 = else_fb_post_form.querySelector('.extra-field-inputs2 .video');
-// get photo & video input
-const photo_input = self_post_form.querySelector('input[name="photo"]');
-const video_input = self_post_form.querySelector('input[name="video"]');
-// Like 
-
-const like_count = document.querySelector('.like-count');
 
 
-// like count
+
+
+
+
+// like counter
 let count = 0;
 
 timeline.onclick = (e) => {
@@ -55,9 +56,6 @@ timeline.onclick = (e) => {
                 <span>${count}</span>
             `;
         }
-            
-        
-
     }
 }
 
@@ -79,7 +77,7 @@ post_method.onchange = () => {
         self.style.display = 'none';
     }
 
-    //other form
+    //other user form
     if(post_method.value == "else"){
         soElse.style.display = "block";
     } 
@@ -88,26 +86,26 @@ post_method.onchange = () => {
     }
 }
 
-// photo field view
+// photo field view self post form
 btn_photo.onclick = () => {
     photo_feild.style.display = 'block';
     video_feild.style.display = 'none';
 } 
 
-// video field view
+// video field view self post form
 btn_video.onclick = () => {
     video_feild.style.display = 'block';
     photo_feild.style.display = 'none';
 } 
 
 
-// photo field view others
+// photo field view other user post form
 btn_photo2.onclick = () => {
     photo_feild2.style.display = 'block';
     video_feild2.style.display = 'none';
 } 
 
-// video field view others
+// video field view other user post form
 btn_video2.onclick = () => {
     video_feild2.style.display = 'block';
     photo_feild2.style.display = 'none';
@@ -125,6 +123,7 @@ const getAllPosts = () => {
         return false;
     }
 
+    // if data exist
     if(data){
 
         //loop for post timeline
@@ -203,7 +202,7 @@ const getAllPosts = () => {
                 `;
             }
 
-            // other post
+            // other user post loop
             if (item.who_post == 'else'){
                 list += `
                 <div class="post-card">
@@ -326,7 +325,7 @@ self_post_form.onsubmit = (e) => {
 }
 
 
-// else post form
+// other user post form
 else_fb_post_form.onsubmit = (e) => {
 
     e.preventDefault();
@@ -357,8 +356,3 @@ else_fb_post_form.onsubmit = (e) => {
     
 
 }
-
-
-
-
-
