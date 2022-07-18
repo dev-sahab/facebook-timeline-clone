@@ -57,6 +57,42 @@
     #right-sidebar {
         display: none;
     }
+    .nav-menu {
+        display: none !important;
+    }
+    .user-authentication {
+        width: 50%;
+        float: right;
+    }
+    .fb-branding {
+        width: 50%;
+        float: left;
+    }
+    .fb-branding .search input {
+        display: none;
+    }
+    #header .search {
+        width: 40px;
+        height: 40px;
+        padding: 0 !important;
+        display: flex !important;
+        justify-content: center;
+        align-items: center !important;
+        cursor: pointer;
+    }
+    .mobile-menu {
+        color: var(--text-clr);
+        width: 40px;
+        height: 40px;
+        background: var(--secondary-clr);
+        border-radius: 50%;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.1rem;
+        margin-left: 8px;
+        cursor: pointer;
+    }
 }
 
 @media (max-width: 460px){

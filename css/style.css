@@ -786,3 +786,6 @@ img{
 .wpost, .else {
 	display: none;
 }
+.mobile-menu{
+    display: none;
+}
