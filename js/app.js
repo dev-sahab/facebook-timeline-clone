@@ -211,11 +211,11 @@ const getAllPosts = () => {
                             <div class="auth-info">
                                 <div class="left-side">
                                     <div class="auth-img">
-                                        <img src="${item.user_img}">
+                                        ${ item.user_img ? '<img src="'+item.user_img+'"/>' : '<img src="https://nakedsecurity.sophos.com/wp-content/uploads/sites/2/2013/08/facebook-silhouette_thumb.jpg"/>'}
                                     </div>
                                     <div class="auth-details">
                                         <div class="name">
-                                            <span>${item.user_name}</span>
+                                            <span>${item.user_name ? 'item.user_name' : 'Facebook User'}</span>
                                         </div>
                                         <div class="details">
                                             <span>Just now</span>
