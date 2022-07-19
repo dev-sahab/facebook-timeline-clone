@@ -764,13 +764,14 @@ img{
     color: var(--primary-blue);
 }
 .like-count {
-    color: var(--text-clr);
-    font-size: 12px;
-    transform: translateY(-8px);
-    display: flex;
-    gap: 7px;
-    align-items: center;
-    margin-top: 5px;
+	color: var(--text-clr);
+	font-size: 12px;
+	transform: translateY(-8px);
+	display: flex;
+	gap: 7px;
+	align-items: center;
+	margin-top: 5px;
+	display: none;
 }
 
 /* No post found */

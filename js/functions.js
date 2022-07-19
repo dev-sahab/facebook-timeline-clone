@@ -64,3 +64,7 @@ const updateLSdata = (key, array) => {
 
     localStorage.setItem(key, JSON.stringify(array))
 }
+
+
+
+
